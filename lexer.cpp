@@ -9,7 +9,7 @@ void Lexer::set_token(Token* token, TokenType type, size_t len) {
     token->type   = type;
     token->length = len;
     token->text   = std::string(&content[cursor], len);
-    list.append(*token);
+    list.push_back(*token);
     cursor += len;
 }
 
@@ -118,7 +118,7 @@ Token Lexer::next_token() {
         }
         token.text = std::string(&content[cursor], token.length);
         cursor += token.length;
-        list.append(token);
+        list.push_back(token);
         return token;
     }
 
@@ -129,7 +129,7 @@ Token Lexer::next_token() {
             token.length += 1;
         }
         token.text = std::string(&content[cursor], token.length);
-        list.append(token);
+        list.push_back(token);
         cursor += token.length;
         return token;
     }

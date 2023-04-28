@@ -1,8 +1,10 @@
 #ifndef LEXER_H
 #define LEXER_H
 
+#include <vector>
 #include "token.h"
-#include "linked_list.h"
+
+// #define INITIAL_SIZE 1024
 
 struct Lexer {
     char* content;
@@ -10,7 +12,8 @@ struct Lexer {
     size_t cursor = 0;
     size_t line = 1;
 
-    LinkedList list = {};
+    std::vector<Token> list;
+    // std::vector<Token> list = std::vector<Token>(INITIAL_SIZE);
 
     Token next_token();
     void set_token(Token* token, TokenType type, size_t len);

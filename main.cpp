@@ -5,7 +5,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string>
 #include <iostream>
 
 #define COUT std::cout
@@ -38,13 +37,10 @@ int main(int arc, char* argv[]) {
     printf("Reached end of file\n");
 
     printf("List of tokens:::\n");
-    Node* node = lexer.list.head;
     printf("[");
-    while ( node->next != nullptr ) {
-        printf(" %s,", node->token.text.c_str());
-        node = node->next;
-    }
-    printf(" %s ]\n", node->token.text.c_str());
+    for (auto it : lexer.list) printf(" %s,", it.text.c_str());
+    printf(" ]\n");
+
 
     free(program);
     fclose(f);
